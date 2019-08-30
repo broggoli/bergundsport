@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons> 
+      <ion-back-button></ion-back-button>
+      <ion-title>Programm</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ion-list-header>
+      <ion-label>Datum</ion-label>
+      <ion-label>Titel</ion-label>
+      <ion-label>Beschreibung</ion-label>
+      <ion-label>Preis</ion-label>
+    </ion-list-header>
+    <veranstaltung-item [routerLink]="'/menu/programm/'+veranstaltung.id" 
+                        routerDirection="forward" [data]="veranstaltung" 
+                        *ngFor="let veranstaltung of programm"></veranstaltung-item>
+  </ion-list>
+</ion-content>

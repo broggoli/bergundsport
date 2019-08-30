@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons> 
+      <ion-back-button defaultHref="menu/programm"></ion-back-button>
+      <ion-title>Programm / {{ veranstaltung.title }}</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-title>{{veranstaltung.title}}</ion-title>
+
+  {{ veranstaltung | json }}
+</ion-content>

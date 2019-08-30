@@ -1,0 +1,10 @@
+#loadedContent,
+#skeleton-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loadedContent img {
+    box-shadow: 20px
+}
