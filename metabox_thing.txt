@@ -1,0 +1,74 @@
+<?php
+    function material_get_meta_box( $meta_boxes ) {
+
+	$meta_boxes[] = array(
+		'title' => 'Material',
+		'post_types' => 'page',
+		'fields' => array(
+			array(
+				'id' => 'group1',
+				'name' => 'Material',
+                'type' => 'group',
+                'clone' => true,
+                'sort_clone' => true,
+                'collapsible' => false,
+                'group_title' => 'mat',
+                'save_state' => true,
+                
+                'fields' => array(
+                    array(
+                        'name' => 'Materialname',
+                        'desc' => 'Der Name des Materials ein.',
+                        'id' => 'materialname',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'name' => 'Materialdetail',
+                        'dec' => 'Details zum Material.',
+                        'id' => 'materialdetail',
+                        'type' => 'text'
+                    ),
+                    array(
+                        'name' => '1 Tag Kosten',
+                        'desc' => 'Den Preis für einen Tag.',
+                        'id' => '1_tag_kosten',
+                        'type' => 'number',
+                        'std' => 0,
+                    ),
+                    array(
+                        'name' => '2 Tag Kosten',
+                        'desc' => 'Den Preis für zwei Tage.',
+                        'id' => '2_tag_kosten',
+                        'type' => 'number',
+                        'std' => 0,
+                    ),
+                    array(
+                        'name' => '3-4 Tag Kosten',
+                        'desc' => 'Den Preis für drei bis vier Tage.',
+                        'id' => '3-4_tag_kosten',
+                        'type' => 'number',
+                        'std' => 0,
+                    ),
+                    array(
+                        'name' => '5-8 Tag Kosten',
+                        'desc' => 'Den Preis für fünf bis sechs Tage.',
+                        'id' => '5-8_tag_kosten',
+                        'type' => 'number',
+                        'std' => 0,
+                    ),
+                    array(
+                        'name' => 'Währung',
+                        'desc' => 'Die gewünschte Währung.',
+                        'id' => 'waehrung',
+                        'type' => 'text',
+                        'std' => 'CHF',
+                    ),
+                ),
+			),
+		),
+	);
+
+	return $meta_boxes;
+}
+add_filter( 'rwmb_meta_boxes', 'material_get_meta_box' );
+?>

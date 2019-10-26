@@ -9,13 +9,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-  <ion-list-header>
-      <ion-label>Datum</ion-label>
-      <ion-label>Titel</ion-label>
-      <ion-label>Beschreibung</ion-label>
-      <ion-label>Preis</ion-label>
-    </ion-list-header>
-    <material-item [data]="mat" *ngFor="let mat of material"></material-item>
-  </ion-list>
+  <material-item [data]="mat" *ngFor="let mat of material"></material-item>
 </ion-content>
+{{ material | json}}

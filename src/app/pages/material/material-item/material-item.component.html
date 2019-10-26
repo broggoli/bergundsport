@@ -1,12 +1,12 @@
-<ion-item>
-  <ion-label>
-    {{ data.name }}
-  </ion-label>
 
-  <ion-label>
-    {{ data.detail }}
-  </ion-label>
-  
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ data.name }}</ion-card-title>
+    <ion-card-subtitle> {{ data.detail }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    
   <ion-label>
     {{ data.day_1 }} {{data.currency}}
   </ion-label>
@@ -22,4 +22,5 @@
   <ion-label>
     {{ data.day_5_8 }} {{data.currency}}
   </ion-label>
-</ion-item>
+  </ion-card-content>
+</ion-card>

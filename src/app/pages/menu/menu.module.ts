@@ -14,20 +14,26 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        loadChildren: "../home/home.module#HomePageModule"
+        loadChildren: () =>
+          import("../home/home.module").then(m => m.HomePageModule)
+        //loadChildren: "../home/home.module#HomePageModule"
       },
       {
         path: "kontakt",
-        loadChildren: "../kontakt/kontakt.module#KontaktPageModule"
+        loadChildren: () =>
+          import("../kontakt/kontakt.module").then(m => m.KontaktPageModule)
+        //loadChildren: "../kontakt/kontakt.module#KontaktPageModule"
       },
       {
         path: "programm",
-        loadChildren: "../programm/programm.module#ProgrammPageModule"
-      },
+        loadChildren: () =>
+          import("../programm/programm.module").then(m => m.ProgrammPageModule)
+        //loadChildren: "../programm/programm.module#ProgrammPageModule"
+      } /*,
       {
         path: "material",
         loadChildren: "../material/material.module#MaterialPageModule"
-      }
+      }*/
     ]
   },
   {

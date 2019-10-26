@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons> 
+      <ion-back-button defaultHref="menu/programm/{{id}}"></ion-back-button>
+      <ion-title>Anmeldung</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="anmeldung-content">
+    <div>
+      <h2>{{ veranstaltung.title }}</h2>
+      <h3>{{veranstaltung.description}}</h3>
+      <h3>{{ veranstaltung.start_date | date:'M.d.yy'}} - {{ veranstaltung.end_date | date:'M.d.yy'}}</h3>
+      <h3>{{ veranstaltung.price.value }} {{ veranstaltung.price.currency }}</h3>
+
+      
+    </div>
+        
+    <form [formGroup]="anmeldung" (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label for="lastName">Nachname</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+        <control-messages [control]="anmeldung.get('lastName')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="firstName">Vorname</ion-label>
+        <ion-input type="text" formControlName="firstName"></ion-input>
+        <control-messages [control]="anmeldung.get('firstName')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="address">Adresse</ion-label>
+        <ion-input type="text" formControlName="address"></ion-input>
+        <control-messages [control]="anmeldung.get('address')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="PLZ">Postleitzahl</ion-label>
+        <ion-input type="number" formControlName="PLZ"></ion-input>
+        <control-messages [control]="anmeldung.get('PLZ')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="place">Ort</ion-label>
+        <ion-input type="text" formControlName="place"></ion-input>
+        <control-messages [control]="anmeldung.get('place')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="email">E-Mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+        <control-messages [control]="anmeldung.get('email')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="tel">Telefon</ion-label>
+        <ion-input type="tel" formControlName="tel"></ion-input>
+        <control-messages [control]="anmeldung.get('tel')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="mobile">Mobil-Telefon</ion-label>
+        <ion-input type="tel" formControlName="mobile"></ion-input>
+        <control-messages [control]="anmeldung.get('mobile')"></control-messages>
+      </ion-item>
+      <ion-item>
+        <ion-label for="bemerkung">Anmerkungen</ion-label>
+        <ion-textarea formControlName="bemerkung"></ion-textarea>
+        <control-messages [control]="anmeldung.get('bemerkung')"></control-messages>
+      </ion-item><!--
+      <ion-item>
+        <ion-label>Mitglied Alpenclub</ion-label>
+        <ion-textarea formControlName="nix"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>vegetarisches Essen</ion-label>
+        <ion-textarea formControlName="nix"></ion-textarea>
+      </ion-item>-->
+      <ion-button type="submit" expand="full" [disabled]="!anmeldung.valid">Anmelden absenden</ion-button>
+    </form>
+  </div>
+  <div id="agb">
+  <p>Mit Ihrer Anmeldung bestätigen Sie, die "Allgemeinen Geschäfts-Bedingungen" (AGB) gelesen zu haben und damit einverstanden zu sein.
+      Ihre persönlichen Daten werden absolut vertraulich behandelt und nur für den gewünschten Zweck genutzt.
+  </p>
+  </div>
+</ion-content>

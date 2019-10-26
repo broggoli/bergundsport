@@ -1,5 +1,8 @@
 {
   "name": "bergundsport",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "api": "http://localhost"
 }

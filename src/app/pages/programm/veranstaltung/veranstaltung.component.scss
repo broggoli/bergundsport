@@ -1,0 +1,11 @@
+ion-card {
+    min-width: 10em !important;
+}
+
+ion-card-content {
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

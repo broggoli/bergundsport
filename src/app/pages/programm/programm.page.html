@@ -9,15 +9,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-  <ion-list-header>
-      <ion-label>Datum</ion-label>
-      <ion-label>Titel</ion-label>
-      <ion-label>Beschreibung</ion-label>
-      <ion-label>Preis</ion-label>
-    </ion-list-header>
-    <veranstaltung-item [routerLink]="'/menu/programm/'+veranstaltung.id" 
-                        routerDirection="forward" [data]="veranstaltung" 
-                        *ngFor="let veranstaltung of programm"></veranstaltung-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row class="ion-justify-content-start">
+      <ion-col *ngFor="let veranstaltung of programm">
+      <veranstaltung-item [routerLink]="'/menu/programm/'+veranstaltung.id" 
+                          routerDirection="forward" [data]="veranstaltung">
+                          </veranstaltung-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

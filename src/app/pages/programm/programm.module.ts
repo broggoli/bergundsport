@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 
 import { IonicModule } from "@ionic/angular";
@@ -8,6 +8,8 @@ import { IonicModule } from "@ionic/angular";
 import { ProgrammPage } from "./programm.page";
 import { VeranstaltungComponent } from "./veranstaltung/veranstaltung.component";
 import { VeranstaltungDetailComponent } from "./veranstaltung/veranstaltung-detail/veranstaltung-detail.component";
+import { AnmeldungPage } from "./anmeldung/anmeldung.page";
+import { ControlMessages } from "./anmeldung/forms/conrol-messages/conrol-messages.component";
 
 const routes: Routes = [
   {
@@ -17,6 +19,10 @@ const routes: Routes = [
   {
     path: ":id",
     component: VeranstaltungDetailComponent
+  },
+  {
+    path: ":id/anmeldung",
+    component: AnmeldungPage
   }
 ];
 
@@ -24,13 +30,16 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     ProgrammPage,
     VeranstaltungComponent,
-    VeranstaltungDetailComponent
+    VeranstaltungDetailComponent,
+    AnmeldungPage,
+    ControlMessages
   ]
 })
 export class ProgrammPageModule {}

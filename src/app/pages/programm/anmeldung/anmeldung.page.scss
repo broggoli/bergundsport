@@ -1,0 +1,29 @@
+#anmeldung-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    div:first-of-type {
+        width: 60%;
+    }
+
+    div {
+        margin: 1em;
+    }
+
+    #agb {
+        p {
+            margin: 1em;
+        }
+    }
+
+    @media (max-width:980px) {
+        flex-direction: column;
+
+        div:first-of-type {
+            width: 80%;
+        }
+    }
+
+    //mobile devices
+}

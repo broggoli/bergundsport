@@ -15,11 +15,11 @@ export class MenuPage implements OnInit {
     {
       title: "Programm",
       url: "/menu/programm"
-    },
+    } /*,
     {
       title: "Material",
       url: "/menu/material"
-    },
+    }*/,
     {
       title: "Kontakt",
       url: "/menu/kontakt"
@@ -30,10 +30,9 @@ export class MenuPage implements OnInit {
   constructor(private router: Router) {
     this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
-        this.selectedPath = event.url;
+        this.selectedPath = event.url.split("/")[0];
       }
     });
   }
-
   ngOnInit() {}
 }

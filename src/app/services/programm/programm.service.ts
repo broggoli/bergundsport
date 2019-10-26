@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { VeranstaltungData } from "../../interfaces/veranstaltungData";
 import { Observable } from "rxjs";
-import { map, filter } from "rxjs/operators";
+import { map } from "rxjs/operators";
+import { SERVER_URL } from "../../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -13,15 +14,14 @@ const httpOptions = {
 })
 export class ProgrammService {
   programm: Observable<VeranstaltungData[]>;
-  url =
-    "http://localhost/wordpress-site/wordpress/wp-json/tribe/events/v1/events";
+  url = SERVER_URL + "programm";
   constructor(private http: HttpClient) {}
 
   getProgramm(): Observable<VeranstaltungData[]> {
     if (!this.programm) {
       this.programm = this.http
         .get<any>(this.url)
-        .pipe(map(data => data.events))
+        .pipe(map(data => data))
         .pipe(
           map((events: any[]) =>
             events.map((event: any) => this.convertToVeranstaltung(event))
@@ -33,15 +33,24 @@ export class ProgrammService {
   private convertToVeranstaltung(event: any): VeranstaltungData {
     return {
       id: event.id,
-      title: event.title,
-      description: event.description.replace(/<\/?[^>]+(>|$)/g, ""),
+      title: event.title.rendered,
+      description: event.kurz_beschreibung.replace(/<\/?[^>]+(>|$)/g, ""),
+      long_description: event.beschreibung.replace(/<\/?[^>]+(>|$)/g, ""),
+      tour_destinations: event.moegliche_tourenziele.replace(
+        /<\/?[^>]+(>|$)/g,
+        ""
+      ),
+      programm: event.programm.replace(/<\/?[^>]+(>|$)/g, ""),
+      skills: event.anforderungen.replace(/<\/?[^>]+(>|$)/g, ""),
+      stay: event.unterkunft.replace(/<\/?[^>]+(>|$)/g, ""),
+      specialities: event.besonderes.replace(/<\/?[^>]+(>|$)/g, ""),
+      service: event.leistung.replace(/<\/?[^>]+(>|$)/g, ""),
       price: {
-        currency: event.cost_details.currency_symbol,
-        value: parseInt(event.cost_details.values[0])
+        currency: "CHF",
+        value: parseInt(event.preis)
       },
-
-      start_date: new Date(event.start_date),
-      end_date: new Date(event.start_date)
+      start_date: new Date(event.start_datum),
+      end_date: new Date(event.end_datum)
     };
   }
 }

@@ -1,4 +1,5 @@
 export interface MaterialData {
+  id: number;
   name: string;
   detail: string;
   day_1: number;

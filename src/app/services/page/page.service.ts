@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PageData } from "../../interfaces/pageData";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { MaterialData } from "src/app/interfaces/materialData";
+import { SERVER_URL } from "../../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -13,8 +13,8 @@ const httpOptions = {
   providedIn: "root"
 })
 export class PageService {
-  private _url =
-    "http://localhost/wordpress-site/wordpress/wp-json/wp/v2/pages/";
+  // tslint:disable-next-line: variable-name
+  private _url = SERVER_URL + "pages/";
   constructor(private http: HttpClient) {}
 
   getPageData(page: string): Observable<PageData> {
@@ -24,6 +24,7 @@ export class PageService {
         map(data => this.convertToPage(data.filter(d => d.slug === page)[0]))
       );
   }
+  /*
   getMaterialData(): Observable<MaterialData[]> {
     return this.getPageData("material")
       .pipe(map(data => data.meta_box))
@@ -33,17 +34,18 @@ export class PageService {
           materials.map((mat: any) => this.convertToMaterial(mat))
         )
       );
-  }
+  }*/
   private convertToPage(page: any): PageData {
     return {
       id: page.id,
       title: page.title,
-      content: page.content,
+      content: page.content.rendered,
       meta_box: page.meta_box
     };
   }
-  private convertToMaterial(mat: any): MaterialData {
-    return {
+  /*
+  private (mat: any): MaterialData {
+    return {convertToMaterial
       name: mat.materialname,
       detail: mat.materialdetail,
       day_1: this.convertToNr(mat["1_tag_koste"]),
@@ -52,8 +54,9 @@ export class PageService {
       day_5_8: this.convertToNr(mat["5-8_tag_koste"]),
       currency: mat.currency
     };
-  }
+  }*/
   private convertToNr(val) {
+    // tslint:disable-next-line: radix
     return parseInt(val ? val : 0);
   }
 }

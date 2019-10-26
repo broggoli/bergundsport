@@ -1,0 +1,28 @@
+#headerImage {
+    position: fixed;
+    overflow-x: hidden;
+    z-index: 10;
+    width: 100%;
+}
+
+#content {
+    position: absolute;
+    z-index: 11;
+    left: 0;
+    top: 40%;
+    background: var(--overlay-color);
+    width: 100%;
+
+    @media (max-width:500px) {
+        top: 30%;
+    }
+
+    @media (max-width:350px) {
+        top: 20%;
+    }
+
+}
+
+ion-content {
+    --background: url("../../../../../assets/header_image.png") top center/ 100% no-repeat;
+}

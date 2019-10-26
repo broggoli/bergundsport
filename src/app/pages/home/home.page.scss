@@ -1,10 +1,50 @@
-#loadedContent,
-#skeleton-container {
+:host #loadedContent::ng-deep {
+    font: --ion-default-font;
     display: flex;
+    width: 100%;
     flex-direction: column;
-    align-items: center;
+
+    h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 2em;
+    }
+
+    p:first-of-type {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            border-radius: 50%;
+            margin: auto 0;
+        }
+    }
 }
 
-#loadedContent img {
-    box-shadow: 20px
+#skeleton-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .profileImage {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        align-self: center;
+        margin: auto 0;
+    }
 }
+
+/*
+#loadedContent {
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+
+    img {
+        border-radius: 50%;
+    }
+}*/

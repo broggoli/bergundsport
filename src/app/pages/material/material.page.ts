@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PageService } from "src/app/services/page/page.service";
+import { MaterialService } from "src/app/services/material/material.service";
 import { MaterialData } from "src/app/interfaces/materialData";
 
 @Component({
@@ -9,10 +9,10 @@ import { MaterialData } from "src/app/interfaces/materialData";
 })
 export class MaterialPage implements OnInit {
   material: MaterialData[];
-  constructor(private pageService: PageService) {}
+  constructor(private materialService: MaterialService) {}
 
   ngOnInit() {
-    this.pageService.getMaterialData().subscribe(mat => {
+    this.materialService.getMaterialData().subscribe(mat => {
       this.material = mat;
     });
   }
