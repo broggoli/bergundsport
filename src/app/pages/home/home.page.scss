@@ -11,7 +11,7 @@
         font-size: 2em;
     }
 
-    p:first-of-type {
+    figure, p:first-of-type {
 
         display: flex;
         flex-direction: column;
@@ -20,6 +20,9 @@
         img {
             border-radius: 50%;
             margin: auto 0;
+        }
+        p {
+            font-size: 0;
         }
     }
 }

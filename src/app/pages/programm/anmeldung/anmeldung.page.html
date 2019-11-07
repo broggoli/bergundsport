@@ -11,10 +11,10 @@
 <ion-content>
   <div id="anmeldung-content">
     <div>
-      <h2>{{ veranstaltung.title }}</h2>
-      <h3>{{veranstaltung.description}}</h3>
-      <h3>{{ veranstaltung.start_date | date:'M.d.yy'}} - {{ veranstaltung.end_date | date:'M.d.yy'}}</h3>
-      <h3>{{ veranstaltung.price.value }} {{ veranstaltung.price.currency }}</h3>
+      <h2>{{ veranstaltung?.title }}</h2>
+      <h3>{{veranstaltung?.description}}</h3>
+      <h3>{{ veranstaltung?.start_date | date:'M.d.yy'}} - {{ veranstaltung?.end_date | date:'M.d.yy'}}</h3>
+      <h3>{{ veranstaltung?.price.value }} {{ veranstaltung?.price.currency }}</h3>
 
       
     </div>

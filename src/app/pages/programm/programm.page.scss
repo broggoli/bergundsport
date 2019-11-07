@@ -1,0 +1,39 @@
+.yaear-title {
+    font-size: 1.8em;
+}
+
+.month-title {
+    font-size: 1.8em;
+}
+
+.seperator {
+    width: 15em;
+    align-self: center;
+    margin: 1em auto;
+}
+
+.seperator::after {
+    content: "";
+    display: block;
+    background: var(--ion-color-medium-shade);
+    height: 0.1em;
+    width: 100%;
+    transition: 200ms cubic-bezier(0.17, 0.44, 0, 1.04);
+}
+
+#skeleton-container {
+    ion-skeleton-text {
+        height: 1.2em;
+    }
+
+    .month-skeleton {
+        height: 2em;
+        //margin-bottom: 1em;
+    }
+
+    .header-skeleton {
+        height: 1.4em;
+        margin-top: 1em;
+    }
+
+}

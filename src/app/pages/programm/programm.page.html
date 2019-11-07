@@ -10,11 +10,49 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-start">
-      <ion-col *ngFor="let veranstaltung of programm">
-      <veranstaltung-item [routerLink]="'/menu/programm/'+veranstaltung.id" 
-                          routerDirection="forward" [data]="veranstaltung">
-                          </veranstaltung-item>
+    <ion-row class="skeleton"*ngIf="programm.length == 0">
+        <ion-col size="12" > 
+          <div id="skeleton-container" >
+            <ion-skeleton-text animated style="width: 20%" class="month-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+
+            <div class="seperator"></div>
+
+            <ion-skeleton-text animated style="width: 20%" class="month-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+
+            <div class="seperator"></div>
+
+            <ion-skeleton-text animated style="width: 20%" class="month-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            
+            <ion-skeleton-text animated style="width: 40%" class="header-skeleton"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </div>
+         </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let block of programm">
+      <ion-col size="12" > 
+        <ion-title class="month-title">{{block.month.name}}</ion-title>
+          <veranstaltung-item *ngFor="let veranstaltung of block.month.veranstaltungen" [routerLink]="'/menu/programm/'+veranstaltung.id" 
+                              routerDirection="root" [data]="veranstaltung">
+                              </veranstaltung-item>
+        <div class="seperator"></div>
       </ion-col>
     </ion-row>
   </ion-grid>

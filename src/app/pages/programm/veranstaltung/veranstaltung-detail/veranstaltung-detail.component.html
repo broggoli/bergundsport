@@ -10,72 +10,152 @@
 
 <ion-content nopadding>
   <div id="content">
-    <ion-grid padding>
-      <h2>{{ veranstaltung.title }}</h2>
-      <ion-row> 
-        <ion-col *ngIf="veranstaltung.start_date && veranstaltung.end_date">
+    <ion-grid padding *ngIf="!veranstaltung">
+      <ion-skeleton-text animated style="width: 40%" class="header-skeleton" ></ion-skeleton-text>
+      <ion-row class="skeleton">
+       <ion-col>
           <div class="date">
             <h2>Datum</h2>
-            <p>{{veranstaltung.start_date | date }} - {{veranstaltung.end_date | date }}</p>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
           </div>
         </ion-col>
          <ion-col>
           <div class="preis">
             <h2>Preis</h2>
-            <p>{{veranstaltung.price.value}} {{veranstaltung.price.currency}}</p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
           </div>
         </ion-col>
-       
       </ion-row>
       <ion-row>
-      <ion-col size="12" *ngIf="veranstaltung.long_description != ''">
+      <ion-col size="12">
           <div class="long_description">
             <h2>Beschreibung</h2>
-            <p>{{veranstaltung.long_description}}</p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 85%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
           </div>
         </ion-col>
-       
       </ion-row>
       <ion-row>
-        <ion-col *ngIf="veranstaltung.service != ''">
+        <ion-col>
           <div class="service">
             <h2>Leistung</h2>
-            <p>{{veranstaltung.service}}</p>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
           </div>
-        </ion-col> <ion-col *ngIf="veranstaltung.stay != ''">
+        </ion-col> 
+        <ion-col>
           <div class="stay">
             <h2>Unterkunft</h2>
-            <p>{{veranstaltung.stay}}</p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
        
-         <ion-col *ngIf="veranstaltung.programm != ''">
+         <ion-col>
           <div class="programm">
             <h2>Programm</h2>
-            <p>{{veranstaltung.programm}}</p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
           </div>
         </ion-col>
-        <ion-col *ngIf="veranstaltung.tour_destinations != ''">
+        <ion-col>
           <div class="tour_destinations">
             <h2>mögliche Tourenziele</h2>
-            <p>{{veranstaltung.tour_destinations }}</p>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
       
-        <ion-col *ngIf="veranstaltung.skills != ''">
+        <ion-col>
           <div class="skills">
             <h2>Anforderungen</h2>
-            <p>{{veranstaltung.skills}}</p>
+            <ion-skeleton-text animated style="width: 85%"></ion-skeleton-text>
           </div>
         </ion-col>
-        <ion-col *ngIf="veranstaltung.specialities != ''">
+        <ion-col>
           <div class="specialities">
             <h2>Besonderes</h2>
-            <p>{{veranstaltung.specialities}}</p>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="full" disabled routerDirection="forward" >Anmelden</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid padding *ngIf="veranstaltung">
+      <h2>{{ veranstaltung?.title }}</h2>
+      <ion-row> 
+        <ion-col *ngIf="veranstaltung?.start_date && veranstaltung?.end_date">
+          <div class="date">
+            <h2>Datum</h2>
+            <p>{{veranstaltung?.start_date | date }} - {{veranstaltung?.end_date | date }}</p>
+          </div>
+        </ion-col>
+         <ion-col>
+          <div class="preis">
+            <h2>Preis</h2>
+            <p>{{veranstaltung?.price.value}} {{veranstaltung?.price.currency}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      <ion-col size="12" *ngIf="veranstaltung?.long_description != ''">
+          <div class="long_description">
+            <h2>Beschreibung</h2>
+            <p>{{veranstaltung?.long_description}}</p>
+          </div>
+        </ion-col>
+       
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="veranstaltung?.service != ''">
+          <div class="service">
+            <h2>Leistung</h2>
+            <p>{{veranstaltung?.service}}</p>
+          </div>
+        </ion-col> <ion-col *ngIf="veranstaltung?.stay != ''">
+          <div class="stay">
+            <h2>Unterkunft</h2>
+            <p>{{veranstaltung?.stay}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+       
+         <ion-col *ngIf="veranstaltung?.programm != ''">
+          <div class="programm">
+            <h2>Programm</h2>
+            <p>{{veranstaltung?.programm}}</p>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="veranstaltung?.tour_destinations != ''">
+          <div class="tour_destinations">
+            <h2>mögliche Tourenziele</h2>
+            <p>{{veranstaltung?.tour_destinations }}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      
+        <ion-col *ngIf="veranstaltung?.skills != ''">
+          <div class="skills">
+            <h2>Anforderungen</h2>
+            <p>{{veranstaltung?.skills}}</p>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="veranstaltung?.specialities != ''">
+          <div class="specialities">
+            <h2>Besonderes</h2>
+            <p>{{veranstaltung?.specialities}}</p>
           </div>
         </ion-col>
       </ion-row>

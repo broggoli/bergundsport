@@ -22,7 +22,7 @@ export class AnmeldungPage implements OnInit {
   id: number;
   anmeldung: FormGroup;
 
-  veranstaltung: VeranstaltungData = {
+  veranstaltung: VeranstaltungData; /*= {
     id: 0,
     title: "...",
     description: "...",
@@ -39,7 +39,7 @@ export class AnmeldungPage implements OnInit {
     },
     start_date: new Date(),
     end_date: new Date()
-  };
+  };*/
 
   constructor(
     private route: ActivatedRoute,
