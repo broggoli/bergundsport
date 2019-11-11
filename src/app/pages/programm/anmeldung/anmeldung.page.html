@@ -19,7 +19,7 @@
       
     </div>
         
-    <form [formGroup]="anmeldung" (ngSubmit)="logForm()">
+    <form [formGroup]="anmeldung" (ngSubmit)="anmelden()">
       <ion-item>
         <ion-label for="lastName">Nachname</ion-label>
         <ion-input type="text" formControlName="lastName"></ion-input>
@@ -64,15 +64,17 @@
         <ion-label for="bemerkung">Anmerkungen</ion-label>
         <ion-textarea formControlName="bemerkung"></ion-textarea>
         <control-messages [control]="anmeldung.get('bemerkung')"></control-messages>
-      </ion-item><!--
-      <ion-item>
-        <ion-label>Mitglied Alpenclub</ion-label>
-        <ion-textarea formControlName="nix"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label>vegetarisches Essen</ion-label>
-        <ion-textarea formControlName="nix"></ion-textarea>
-      </ion-item>-->
+          <ion-label>Mitglied Alpenclub</ion-label>
+          <ion-checkbox formControlName="alpenClubMember"></ion-checkbox>
+          <control-messages [control]="anmeldung.get('alpenClubMember')"></control-messages>
+        </ion-item>
+        <ion-item>
+          <ion-label>vegetarisches Essen</ion-label>
+          <ion-checkbox formControlName="vegi"></ion-checkbox>
+          <control-messages [control]="anmeldung.get('vegi')"></control-messages>
+        </ion-item>
       <ion-button type="submit" expand="full" [disabled]="!anmeldung.valid">Anmelden absenden</ion-button>
     </form>
   </div>

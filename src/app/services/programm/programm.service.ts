@@ -1,13 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ComponentFactoryResolver } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {
-  VeranstaltungData,
-  SortedProgram
+  VeranstaltungData
 } from "../../interfaces/veranstaltungData";
-import { Observable, pipe, of, from } from "rxjs";
-import { map, tap, groupBy, mergeMap, toArray } from "rxjs/operators";
+import { Observable, pipe, of, from, zip } from "rxjs";
+import { map, tap, groupBy, mergeMap, toArray, flatMap, scan,  } from "rxjs/operators";
 import { SERVER_URL } from "../../../environments/environment";
-import { VeranstaltungComponent } from "src/app/pages/programm/veranstaltung/veranstaltung.component";
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -34,47 +32,52 @@ export class ProgrammService {
     "November",
     "Dezember"
   ];
+  sortDate(event1: VeranstaltungData, event2: VeranstaltungData) { 
+    if( event1.start_date < event2.start_date ) return 1;
+    else return -1;
+  }
+  /*
+  yearBins(programm: Observable<VeranstaltungData[]>) 
+    : Observable<VeranstaltungData[]>{
+      return programm.pipe(
+        //mergeMap(eventsArray => eventsArray.sort((event1, event2) => this.sortDate(event1, event2))),
+        mergeMap(eventsArray => eventsArray),
+        groupBy((event: VeranstaltungData) => event.start_date.getFullYear()),
+        mergeMap( group => group.pipe(toArray())),
+      )
+  }
+  monthBins(programm: Observable<VeranstaltungData[]>) 
+    : Observable<VeranstaltungData[][]>{
+      return this.yearBins(programm)
+      .pipe(
+        map(eventsArray => from(eventsArray.sort((event1, event2) => this.sortDate(event1, event2)))
+          .pipe(
+            groupBy((event: VeranstaltungData) => event.start_date.getMonth()),
+            mergeMap( group => group.pipe(toArray())),
+          )
+        ),
+        mergeMap( group => group.pipe(toArray()))
+      )
+      
+  }*/
   sortProgramm(
     programm: Observable<VeranstaltungData[]>
-  ): Observable<SortedProgram[]> {
-    const sortedProgramm = programm
-      .pipe(mergeMap(eventsArray => eventsArray.sort()))
-      .pipe(sort)
-      .pipe(
-        groupBy((event: VeranstaltungData) => event.start_date.getFullYear())
-      )
-      .pipe(
-        map(year =>
-          year.pipe(
+  ): Observable<VeranstaltungData[][]> {
+    return programm.pipe(
+      //mergeMap(eventsArray => eventsArray.sort((event1, event2) => this.sortDate(event1, event2))),
+      mergeMap(eventsArray => eventsArray.sort((event1, event2) => this.sortDate(event1, event2))),
+      groupBy((event: VeranstaltungData) => event.start_date.getFullYear()),
+      mergeMap( group => group.pipe(toArray())),
+      map(eventsArray => from(eventsArray)
+          .pipe(
             groupBy((event: VeranstaltungData) => event.start_date.getMonth()),
-            // return each item in group as array
-            mergeMap(group => group.pipe(toArray())),
-            map(monthProgram => {
-              const yearName = this.monthNames[
-                monthProgram[0].start_date.getFullYear()
-              ];
-              const monthName = this.monthNames[
-                monthProgram[0].start_date.getMonth()
-              ];
-              const sorted: SortedProgram = {
-                year: [
-                  {
-                    year_name: yearName,
-                    month: {
-                      name: monthName,
-                      veranstaltungen: monthProgram
-                    }
-                  }
-                ]
-              };
-              return sorted;
-            })
+            mergeMap( group => group.pipe(toArray())),
           )
-        )
-      );
-    return sortedProgramm;
+        ),
+        mergeMap( group => group.pipe(toArray()))
+    )
   }
-  getSortedProgramm(): Observable<SortedProgram[]> {
+  getSortedProgramm(): Observable<VeranstaltungData[][]> {
     return this.sortProgramm(this.getProgramm());
   }
   getProgramm(): Observable<VeranstaltungData[]> {

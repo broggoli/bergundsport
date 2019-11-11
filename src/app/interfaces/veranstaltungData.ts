@@ -20,15 +20,3 @@ export interface VeranstaltungData {
   header_image: string;
   show: boolean;
 }
-
-export interface SortedProgram {
-  year: [
-    {
-      year_name: string;
-      month: {
-        name: string;
-        veranstaltungen: VeranstaltungData[];
-      };
-    }
-  ];
-}

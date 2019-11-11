@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="skeleton"*ngIf="programm.length == 0">
+    <ion-row class="skeleton" *ngIf="programm.length == 0">
         <ion-col size="12" > 
           <div id="skeleton-container" >
             <ion-skeleton-text animated style="width: 20%" class="month-skeleton"></ion-skeleton-text>
@@ -46,14 +46,25 @@
           </div>
          </ion-col>
     </ion-row>
-    <ion-row *ngFor="let block of programm">
-      <ion-col size="12" > 
-        <ion-title class="month-title">{{block.month.name}}</ion-title>
-          <veranstaltung-item *ngFor="let veranstaltung of block.month.veranstaltungen" [routerLink]="'/menu/programm/'+veranstaltung.id" 
-                              routerDirection="root" [data]="veranstaltung">
-                              </veranstaltung-item>
-        <div class="seperator"></div>
-      </ion-col>
-    </ion-row>
+    <div *ngIf="programm">
+      <div id="year_block" *ngFor="let year of programm">
+        <ion-col size="12" >
+          <ion-title class="year-title">{{year[0][0].start_date | date:"yyyy"}}</ion-title>
+        </ion-col>
+        
+        <ion-row *ngFor="let month of year">
+          <ion-col size="12" >
+            <ion-title class="month-title">{{month[0].start_date | date:"MMMM"}}</ion-title>
+          </ion-col>
+          <ion-col size="12" >
+            <veranstaltung-item *ngFor="let veranstaltung of month" [routerLink]="'/menu/programm/'+veranstaltung.id" 
+                                routerDirection="root" [data]="veranstaltung">
+                                </veranstaltung-item>
+          </ion-col>
+          <div class="seperator"></div>
+        </ion-row>
+      </div>
+    </div>
+   
   </ion-grid>
 </ion-content>

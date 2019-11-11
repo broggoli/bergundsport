@@ -11,6 +11,7 @@ import {
   FormGroup,
   FormControl
 } from "@angular/forms";
+import { MailData } from 'src/app/interfaces/sendData';
 
 @Component({
   selector: "app-anmeldung",
@@ -22,24 +23,7 @@ export class AnmeldungPage implements OnInit {
   id: number;
   anmeldung: FormGroup;
 
-  veranstaltung: VeranstaltungData; /*= {
-    id: 0,
-    title: "...",
-    description: "...",
-    long_description: "...",
-    tour_destinations: "...",
-    programm: "...",
-    skills: "...",
-    stay: "...",
-    specialities: "...",
-    service: "...",
-    price: {
-      currency: "CHF",
-      value: 0
-    },
-    start_date: new Date(),
-    end_date: new Date()
-  };*/
+  veranstaltung: VeranstaltungData;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,17 +32,17 @@ export class AnmeldungPage implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.anmeldung = this.formBuilder.group({
-      lastName: ["", Validators.required],
-      firstName: ["", Validators.required],
-      address: ["", Validators.required],
-      PLZ: ["", Validators.required],
-      place: ["", Validators.required],
-      email: ["", [Validators.required, ValidationService.emailValidator]],
-      tel: ["", [Validators.required, ValidationService.telValidator]],
-      mobile: ["", [ValidationService.telValidator]],
-      bemerkung: [""],
-      mitgliedAlpenclub: [""],
-      vegi: [""]
+      lastName: ["asd", Validators.required],
+      firstName: ["asd", Validators.required],
+      address: ["asd", Validators.required],
+      PLZ: ["as", Validators.required],
+      place: ["asd", Validators.required],
+      email: ["broggoli.nb@gmail.com", [Validators.required, ValidationService.emailValidator]],
+      tel: ["0202020202", [Validators.required, ValidationService.telValidator]],
+      mobile: ["0202020202", [ValidationService.telValidator]],
+      bemerkung: ["asd"],
+      alpenClubMember: [false],
+      vegi: [true]
     });
   }
 
@@ -85,11 +69,13 @@ export class AnmeldungPage implements OnInit {
 
   anmelden() {
     if (this.anmeldung.dirty && this.anmeldung.valid) {
-      const data = this.anmeldung.value;
-      this.mailService.sendMail(data).subscribe(d => console.log(d));
+      const data: MailData = this.anmeldung.value ;
+      console.log(data)
+      this.mailService.sendMail(data).subscribe(d => {console.log(d); alert(
+        `Anmeldung erfolgreich übermittelt!`)});
     } else {
       alert(
-        `Name: ${this.anmeldung.value.firstName} Email: ${this.anmeldung.value.email}`
+        `Anmeldung konnte nicht abgeschickt werden!`
       );
     }
   }

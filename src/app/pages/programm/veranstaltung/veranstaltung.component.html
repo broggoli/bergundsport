@@ -1,14 +1,11 @@
-<ion-card class="event-card" routerDirection="forward">
-  <ion-card-header>
+<div id="veranstaltung">
+  <div id="list-header">
     <ion-card-title>{{ data.title }}</ion-card-title>
     <ion-card-subtitle>{{ data.description }}</ion-card-subtitle>
-  </ion-card-header>
-
-  <ion-card-content>
-    <div> 
-      <span>{{ data.start_date | date:'M.d.yy'}} - {{ data.end_date | date:'M.d.yy'}}</span>
-      <span>|</span>
-       <span>{{ data.price.value }} {{ data.price.currency }}</span>
-    </div>
-  </ion-card-content>
-</ion-card>
+  </div>
+  <div id="item-content"> 
+    <span>{{ data.start_date | date:'M.d.yy'}} - {{ data.end_date | date:'M.d.yy'}}</span>
+    <span>|</span>
+      <span>{{ data.price.value }} {{ data.price.currency }}</span>
+  </div>
+</div>

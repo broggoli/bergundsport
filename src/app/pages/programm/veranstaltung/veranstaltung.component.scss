@@ -1,8 +1,12 @@
-ion-card {
+#veranstaltung {
     min-width: 10em !important;
+    display: block;
+    margin-left: 21px;
+    padding: 0.5em;
+    background: var(--ion-color-light-shade);
 }
 
-ion-card-content {
+#item-content {
     div {
         display: flex;
         flex-direction: row;
