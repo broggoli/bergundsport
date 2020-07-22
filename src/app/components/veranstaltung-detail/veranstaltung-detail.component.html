@@ -179,8 +179,7 @@
       </ion-row>
     </ion-grid>
     <ion-grid>
-
-      <ngx-gallery id="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      <ngx-gallery *ngIf="galleryImages && galleryImages.length" id="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
     </ion-grid>
   </div>
   <app-footer></app-footer>

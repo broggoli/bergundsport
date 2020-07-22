@@ -8,3 +8,12 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+ngx-gallery { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    width: 100%;
+}
+
+:host ngx-gallery::ng-deep {
+    border: 0;
+}

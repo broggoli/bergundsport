@@ -4,7 +4,7 @@ import { ProgrammService } from "src/app/services/programm/programm.service";
 import { VeranstaltungData } from "src/app/interfaces/veranstaltungData";
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryImageSize } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: "app-veranstaltung-detail",
@@ -36,48 +36,54 @@ export class VeranstaltungDetailComponent implements OnInit {
                   list => list.title === this.veranstaltung.matList
                 )[0]
               )
-          )
+          );
+          this.galleryImages = this.veranstaltung.image_urls.map(((s, i) => { 
+              
+              return { 
+                small: s,
+                medium: s,
+                big: s,
+                description: "imgage"+i} 
+            }));
+          console.log(this.galleryImages)
         }
       );
       this.galleryOptions = [
         {
-            width: '600px',
-            height: '400px',
-            thumbnailsColumns: 4,
-            imageAnimation: NgxGalleryAnimation.Slide
-        },
-        // max-width 800
-        {
-            breakpoint: 800,
             width: '100%',
-            height: '600px',
-            imagePercent: 80,
-            thumbnailsPercent: 20,
-            thumbnailsMargin: 20,
-            thumbnailMargin: 20
+            height: '500px',
+            thumbnailsColumns: 5,
+            imageAnimation: NgxGalleryAnimation.Fade,
+            imageArrows: true,
+            imageSwipe: true,
+            imageSize: NgxGalleryImageSize.Contain,
+            thumbnailsMargin: 5,
+            thumbnailsArrows: true,
+            //thumbnailsRows: 2,
+            //thumbnailsPercent: 20,
+            thumbnailsAutoHide: true,
+
+            preview: false,
+            thumbnailSize: NgxGalleryImageSize.Cover,
+
+            arrowPrevIcon: 'fa fa-arrow-circle-left',
+            arrowNextIcon: 'fa fa-arrow-circle-right',
+
+            previewFullscreen: false,
+            previewCloseOnEsc: true,
+            previewCloseOnClick: true,
+            imageDescription: false,
+            thumbnailsSwipe: true,
+            lazyLoading: true
+            
+            //imagePercent: 85,
         },
         // max-width 400
         {
             breakpoint: 400,
+            width: '100%',
+            height: '300px',
             preview: false
-        }
-    ];
-
-    this.galleryImages = [
-        {
-            small: 'assets/1-small.jpg',
-            medium: 'assets/1-medium.jpg',
-            big: 'assets/1-big.jpg'
-        },
-        {
-            small: 'assets/2-small.jpg',
-            medium: 'assets/2-medium.jpg',
-            big: 'assets/2-big.jpg'
-        },
-        {
-            small: 'assets/3-small.jpg',
-            medium: 'assets/3-medium.jpg',
-            big: 'assets/3-big.jpg'
         }
     ];
 

@@ -14,7 +14,7 @@ import { ControlMessages } from "../../components/conrol-messages/conrol-message
 import { HeaderModule } from '../../components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { NgxGalleryModule, NgxGalleryComponent } from 'ngx-gallery';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 const routes: Routes = [
   {
     path: "",
@@ -47,7 +47,6 @@ const routes: Routes = [
     VeranstaltungDetailComponent,
     AnmeldungPage,
     ControlMessages
-    //, NgxGalleryComponent
   ]
 })
 export class ProgrammPageModule {}
