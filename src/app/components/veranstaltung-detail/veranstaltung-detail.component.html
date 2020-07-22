@@ -1,0 +1,187 @@
+<ion-content>
+  <app-header *ngIf="veranstaltung" [header_image_url]="veranstaltung?.header_image"></app-header>
+  <div id="content">
+    <ion-grid *ngIf="!veranstaltung">
+      <ion-skeleton-text animated style="width: 40%" class="header-skeleton" ></ion-skeleton-text>
+      <ion-row class="skeleton">
+       <ion-col>
+          <div class="date">
+            <h2>Datum</h2>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+         <ion-col>
+          <div class="preis">
+            <h2>Preis</h2>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      <ion-col size="12">
+          <div class="long_description">
+            <h2>Beschreibung</h2>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 85%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="service">
+            <h2>Leistung</h2>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-col> 
+        <ion-col>
+          <div class="stay">
+            <h2>Unterkunft</h2>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+       
+         <ion-col>
+          <div class="programm">
+            <h2>Programm</h2>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="tour_destinations">
+            <h2>Mögliche Tourenziele</h2>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      
+        <ion-col>
+          <div class="skills">
+            <h2>Anforderungen</h2>
+            <ion-skeleton-text animated style="width: 85%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="specialities">
+            <h2>Besonderes</h2>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="full" disabled routerDirection="forward" >Anmelden</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="veranstaltung">
+      <h2>{{ veranstaltung?.title }}</h2>
+      <ion-row> 
+        <ion-col *ngIf="veranstaltung?.start_date && veranstaltung?.end_date">
+          <div class="date">
+            <h2>Datum</h2>
+            <p>{{veranstaltung?.start_date | date: "dd.MM.yy" }} - {{veranstaltung?.end_date | date: "dd.MM.yy" }}</p>
+          </div>
+        </ion-col>
+         <ion-col>
+          <div class="preis">
+            <h2>Preis</h2>
+            <p>{{veranstaltung?.price.value}} {{veranstaltung?.price.currency}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      <ion-col size="12" *ngIf="veranstaltung?.long_description != '' && veranstaltung?.long_description != '<br>'">
+          <div class="long_description">
+            <h2>Beschreibung</h2>
+            <p [innerHtml]="veranstaltung?.long_description"></p>
+          </div>
+        </ion-col>
+       
+      </ion-row>
+      <ion-row>
+       
+        <ion-col *ngIf="veranstaltung?.programm != '' && veranstaltung?.programm != '<br>'">
+         <div class="programm">
+           <h2>Programm</h2>
+           <p [innerHtml]="veranstaltung?.programm"></p>
+         </div>
+       </ion-col>
+     
+     </ion-row>
+     <ion-row>
+     
+       <ion-col *ngIf="veranstaltung?.skills != ''">
+         <div class="skills">
+           <h2>Anforderungen</h2>
+           <p [innerHtml]="veranstaltung?.skills"></p>
+         </div>
+       </ion-col>
+     
+     </ion-row>
+      <ion-row> <ion-col *ngIf="veranstaltung?.stay != ''">
+          <div class="stay">
+            <h2>Unterkunft</h2>
+            <p [innerHtml]="veranstaltung?.stay"></p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col *ngIf="veranstaltung?.service != '' && veranstaltung?.service != '<br>'">
+          <div class="service">
+            <h2>Leistung</h2>
+            <p [innerHtml]="veranstaltung?.service"></p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col *ngIf="veranstaltung?.tour_destinations != '' && veranstaltung?.tour_destinations != '<br>'">
+          <div class="tour_destinations">
+            <h2>Mögliche Tourenziele</h2>
+            <p [innerHtml]="veranstaltung?.tour_destinations"></p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="veranstaltung?.specialities && veranstaltung?.specialities != '<br>'">
+          <div class="specialities">
+            <h2>Besonderes</h2>
+            <p [innerHtml]="veranstaltung?.specialities"></p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col *ngIf="matList != ''">
+          <div class="matList">
+            <h2>Material</h2>
+            <!--<p><a href="../../../assets/packlisten/{{packliste}}.pdf" download>Hier</a> finden sie eine Packliste </p>-->
+            <div id="matList">
+              <p [innerHtml]="(matList | async)?.text "></p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="full" [disabled]="veranstaltung?.ausgebucht" [routerLink]="['/menu','programm', id, 'anmeldung']" routerDirection="forward" >Anmelden</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+
+      <ngx-gallery id="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+    </ion-grid>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

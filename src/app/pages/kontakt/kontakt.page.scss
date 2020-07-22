@@ -1,0 +1,68 @@
+
+#container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    h2 {
+        font-size: 2em;
+        display: none;
+        
+        @media (max-width: 750px) {
+            margin: 1em;
+            display: block;
+            margin-bottom: 0;
+            width: auto;
+        }
+    }
+}
+
+:host #loadedContent::ng-deep {
+    font: --ion-default-font;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+    
+    @media (min-width: 500px) {
+        margin-top: 1em;
+    }
+
+    figure {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            border-radius: 50%;
+            margin: auto 0;
+        }
+        p {
+            font-size: 0;
+        }
+    }
+    p {
+        margin: 0 auto;
+        width: 50%;
+        
+        @media (max-width: 750px) {
+            margin: 0 2em;
+            width: auto;
+        }
+    }
+}
+
+#skeleton-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 0.5em;
+
+    .profileImage {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        align-self: center;
+        margin: auto 0;
+    }
+}

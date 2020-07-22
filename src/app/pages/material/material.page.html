@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start"> 
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Material</ion-title>
+      <ion-buttons slot="end"> 
+        <ion-menu-button ></ion-menu-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <material-item [data]="mat" *ngFor="let mat of material"></material-item>
+</ion-content>
+{{ material | json}}

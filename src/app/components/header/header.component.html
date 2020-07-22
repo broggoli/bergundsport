@@ -1,0 +1,29 @@
+<div id="header">
+  
+    <div id="menu-button">
+      <ion-menu-button ></ion-menu-button>
+    </div>
+    <div id="header-image" [ngStyle]="{'background-image':'url('+header_image_url+')'}" >
+
+        <img id="logo" src="assets/BergUndSportLogo.svg" onerror="this.onerror=null; this.src='splash.png'"> 
+    </div>
+    <div id="menu-list">
+      
+      <div class="menu-item" *ngFor="let page of pages" [routerLink]="page.url" routerDirection="root"
+        [ngClass] = "{'active-item': (!page.open && checkURL(selectedPath, page.url))}">
+          <div  *ngIf="!page.open" >{{ page.title }}</div>
+          <div *ngIf="page.open">{{ page.title }}
+            {{ page.title }}
+            <div class="subMenu">
+              <ul>
+                <li *ngFor="let subPage of page.subPages">
+                  {{ subPage.title }}
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div> 
+    </div>
+   
+  </div>
+  

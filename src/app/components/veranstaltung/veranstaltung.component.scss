@@ -1,0 +1,89 @@
+#veranstaltung {
+    min-width: 10em !important;
+    margin: 0.1em 21px;
+    padding: 0.2em;
+    background-color: var(--ion-color-primary-contrast);
+    transition: 200ms ease-in-out;
+    transform: translateZ(0);
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 350px) {
+        flex-direction: column;
+    }
+    #category-image{
+        min-width: 6.5em;
+        margin-right: 1em;
+    }
+    #category-image::ng-deep{
+        fill: #144063;
+    }
+
+    #veranstaltung-info {
+        flex-grow: 2;
+        #veranstaltung-header {
+            #title{
+                font-size: 1.3em;
+                margin: 0.2em;
+                margin-left: 0.1em;
+            }
+            #subtitle{
+                font-size: 1em;
+                margin: 0.1em;
+            }
+            margin: 0.1em;
+        }
+    
+        #item-content {
+            display: flex;
+            flex-direction: row;
+            margin: 0.2em;
+            span {
+                margin-top: 0.2em;
+            }
+            justify-content: space-between;
+            @media (max-width: 350px) {
+                flex-direction: column;
+            }
+        }
+    }
+    
+}
+
+#ausgebucht-schild.ausgebucht{
+    display: block;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    position: relative;
+    z-index: 4;
+    color: var(--ion-color-secondary);
+    //background: white;
+    height: 1.2em;
+    width: 6em;
+    font-size: 1.2em;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    top: 2.5em;
+    left: 0.2em;
+    
+}
+#ausgebucht-schild {
+    display: none;
+}
+#veranstaltung.ausgebucht {
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='1');
+    -webkit-filter: url(#blur-filter);
+    filter: url(#blur-filter);
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+}
+.blur-svg {
+    display: none;
+}
+#veranstaltung:hover {
+    //background-color: var(--ion-color-light-shade);
+    transform: translate3D(-2px, -1px, 0);
+    //box-shadow: var(--ion-color-dark-shade) 2px 1px;
+}

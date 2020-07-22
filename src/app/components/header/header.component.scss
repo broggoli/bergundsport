@@ -1,0 +1,107 @@
+#header{
+    margin: 0;
+    padding: 0;
+    //background: url("../../../assets/header_image.png") top center/ 100% no-repeat;
+    width: 100%;
+    
+    .subMenu{
+        width: 100%;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1em;
+            li { 
+                margin: 0 1em;
+            }
+        }
+        text-align: left;
+        position: absolute;
+        top: 0.2em;
+        color: white;
+        background-color: var(--ion-color-primary);
+    }
+    #menu-button {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        z-index: 100;
+        ion-menu-button{
+            --color: black;
+        }
+        @media (min-width: 750px) {
+            display: none;
+        }
+    }
+    #header-image:after {
+        position: absolute;
+        left: 0;
+        content:"";
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+            hsla(0, 0%, 0%, 0) 45%,
+            hsla(0, 0%, 0%, 0.008) 50%,
+            hsla(0, 0%, 0%, 0.021) 55%,
+            hsla(0, 0%, 0%, 0.042) 65%,
+            hsla(0, 0%, 0%, 0.089) 70%,
+            hsla(0, 0%, 0%, 0.651) 95%,
+            hsla(0, 0%, 0%, 0.664) 100%
+          );
+    }
+    #header-image {
+        height: 20em;
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        @media (max-width: 750px) {
+            height: 15em;
+            background-size: cover;
+        }
+        @media (max-width: 500px) {
+            height: 12em;
+        }
+        transition: 200ms ease;
+        #logo{
+            z-index: 5;
+            height: 4em;
+            @media (max-width: 500px) {
+                height: 3em;
+            }
+        }
+    }
+    #menu-list{
+        height: 2.5em;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-bottom: solid 1px black;
+        .menu-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 2.5em;
+            flex: 1 1 0px;
+            font-weight: bold;
+            text-align: center;
+            background: transparent;
+            transition: 0.2s ease-in-out;
+        }
+        .menu-item.active-item{
+            background: var(--ion-color-secondary);
+        }
+        .menu-item:hover{
+            background: var(--ion-color-primary);
+            color: #fff;
+        }
+        @media (max-width: 750px) {
+            display: none;
+        }
+    }
+}

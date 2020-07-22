@@ -1,0 +1,16 @@
+:host {
+ 
+    h1 {
+        margin-left: 10%;
+    }
+    #loadedContent::ng-deep {
+
+        max-width: 50%;
+        margin-left: 10%;
+
+        @media (max-width: 500px) {
+            max-width: 80%;
+            margin: auto;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+   <div id="splash-screen" [ngClass]="showSplash ? 'show' : 'none'">
+      
+    <img id="logo" src="assets/splash.svg" onerror="this.onerror=null; this.src='splash.png'">   
+  <div class="progress-bar-container">
+    <div class="progress-bar"></div>
+  </div>
+  </div>
+</ion-app>
