@@ -62,7 +62,6 @@ export class ProgrammService {
   }
   getMatLists(): Observable<any[]> {
     if (!this.matLists) {
-      console.log("asd")
       this.matLists = this.http
         .get<any>(this.mat_url)
         .pipe(
@@ -72,7 +71,7 @@ export class ProgrammService {
               .map((item: any) => {
                 return {
                   title: item.slug,
-                  text: item.content.rendered
+                  text: item.ausruestung.replace(/\r\n/g, `<br/>`)
                 }
               })
           ),

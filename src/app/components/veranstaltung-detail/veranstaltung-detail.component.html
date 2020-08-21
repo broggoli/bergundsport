@@ -161,11 +161,10 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row> 
         <ion-col *ngIf="matList != ''">
           <div class="matList">
             <h2>Material</h2>
-            <!--<p><a href="../../../assets/packlisten/{{packliste}}.pdf" download>Hier</a> finden sie eine Packliste </p>-->
             <div id="matList">
               <p [innerHtml]="(matList | async)?.text "></p>
             </div>

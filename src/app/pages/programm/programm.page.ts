@@ -17,7 +17,6 @@ export class ProgrammPage implements OnInit {
       .getSortedProgramm()
       .subscribe(programm => {
           this.programm.push(programm);
-          //console.log(this.programm); 
       });
   }
   

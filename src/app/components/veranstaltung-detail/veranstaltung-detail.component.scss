@@ -14,6 +14,14 @@ ngx-gallery {
     width: 100%;
 }
 
-:host ngx-gallery::ng-deep {
-    border: 0;
+:host ngx-gallery::ng-deep ngx-gallery-thumbnails {
+    .ngx-gallery-thumbnail {
+        border: none !important;
+        filter: grayscale(1);
+        transition: filter ease 1s;
+    }
+    .ngx-gallery-active {
+        border: none !important;
+        filter: grayscale(0);
+    }
 }

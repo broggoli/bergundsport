@@ -37,6 +37,7 @@ export class VeranstaltungDetailComponent implements OnInit {
                 )[0]
               )
           );
+          console.log(this.matList)
           this.galleryImages = this.veranstaltung.image_urls.map(((s, i) => { 
               
               return { 
@@ -45,7 +46,6 @@ export class VeranstaltungDetailComponent implements OnInit {
                 big: s,
                 description: "imgage"+i} 
             }));
-          console.log(this.galleryImages)
         }
       );
       this.galleryOptions = [

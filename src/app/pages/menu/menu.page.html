@@ -11,7 +11,7 @@
       <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
         <ion-item [routerLink]="page.url" 
                   routerDirection="root" 
-                  [ngClass] = "{'active-item': checkURL(selectedPath, page.url)}">
+                  [ngClass] = "{'active-item': (!page.open && checkURL(selectedPath, page.url))}">
             {{ page.title }}
           </ion-item>
       </ion-menu-toggle>
