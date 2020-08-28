@@ -1,10 +1,69 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="content">
+    <ion-header>
+      <ion-menu-toggle routerLink="/home" auto-hide="false"  routerDirection="root">
+        <img id="headerImg" src="assets/BergUndSportLogo.svg"/>
+      </ion-menu-toggle>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <!--<div class="menu-item" *ngFor="let page of pages"
+        [ngClass] = "{'active-item': (checkURL(selectedPath, page.url))}">
+          <div class="container" *ngIf="page.subPages">
+            <div class="title">{{ page.title }}</div>
+            <div class="subMenu">
+                <div class="subMenu-item" *ngFor="let subPage of page.subPages" [routerLink]="subPage.url" routerDirection="root">
+                  {{ subPage.title }}
+                </div>
+            </div>
+          </div>
+        <div class="container" *ngIf="!page.subPages" [routerLink]="page.url" routerDirection="root">
+          <div class="title">{{ page.title }}</div>
+        </div>
+      </div>-->
+      <div *ngFor="let page of pages">
+        <ion-list *ngIf="page.subPages">
+          <ion-item class="subMenu-title" (click)="toggleSubMenu(page.title)" 
+            [ngClass] = "{'active-item': (checkURL(selectedPath, page.url))}">
+            {{ page.title }}
+          </ion-item>
+          <div *ngIf="openSubmenu == page.title || checkURL(selectedPath, page.url)">
+            <ion-menu-toggle auto-hide="false" *ngFor="let subPage of page.subPages" >
+              <ion-item [routerLink]="subPage.url" 
+                        routerDirection="root" class="subMenu-item"
+                        [ngClass] = "{'active-item': (checkURL(selectedPath, subPage.url))}">
+                  {{ subPage.title }}
+                </ion-item>
+            </ion-menu-toggle>
+          </div>
+        </ion-list>
+        <ion-menu-toggle auto-hide="false" *ngIf="!page.subPages">
+          <ion-item [routerLink]="page.url" 
+                    routerDirection="root" 
+                    [ngClass] = "{'active-item': (!page.open && checkURL(selectedPath, page.url))}">
+              {{ page.title }}
+            </ion-item>
+        </ion-menu-toggle>
+      </div>
+      
+      </ion-list>
+    </ion-content>
+      <div class="acknowledgement">
+      <div id="madeBy">
+        <p>
+          <a href="http://www.broggoli.ch">Web design by Nick Bachmann</a>
+        </p>
+      </div>
+    </div>  
+  </ion-menu>
+  <ion-router-outlet id="content"></ion-router-outlet>
+  <!--
    <div id="splash-screen" [ngClass]="showSplash ? 'show' : 'none'">
       
     <img id="logo" src="assets/splash.svg" onerror="this.onerror=null; this.src='splash.png'">   
-  <div class="progress-bar-container">
-    <div class="progress-bar"></div>
-  </div>
-  </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>-->
 </ion-app>

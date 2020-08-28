@@ -9,7 +9,11 @@ import { MenuPage } from "./menu.page";
 
 const routes: Routes = [
   {
-    path: "menu",
+    path: "",
+    redirectTo: "/home"
+  },
+  {
+    path: "",
     component: MenuPage,
     children: [
       {
@@ -40,10 +44,6 @@ const routes: Routes = [
         loadChildren: "../material/material.module#MaterialPageModule"
       }*/
     ]
-  },
-  {
-    path: "",
-    redirectTo: "/menu/home"
   }
 ];
 

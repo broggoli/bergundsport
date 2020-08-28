@@ -4,22 +4,6 @@
     //background: url("../../../assets/header_image.png") top center/ 100% no-repeat;
     width: 100%;
     
-    .subMenu{
-        width: 100%;
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 1em;
-            li { 
-                margin: 0 1em;
-            }
-        }
-        text-align: left;
-        position: absolute;
-        top: 0.2em;
-        color: white;
-        background-color: var(--ion-color-primary);
-    }
     #menu-button {
         position: absolute;
         top: 1em;
@@ -82,9 +66,10 @@
         flex-direction: row;
         justify-content: center;
         border-bottom: solid 1px black;
-        .menu-item{
-            display: flex;
+        .menu-item {
             flex-direction: column;
+            position: relative;
+            display: inline-block;
             justify-content: center;
             height: 2.5em;
             flex: 1 1 0px;
@@ -92,13 +77,41 @@
             text-align: center;
             background: transparent;
             transition: 0.2s ease-in-out;
+            cursor: pointer;
+            .container {
+                height: 100%;
+            }
+            .title {
+                padding-top: 0.6em;
+            }
+            .subMenu {
+                display: none;
+            }
         }
-        .menu-item.active-item{
-            background: var(--ion-color-secondary);
-        }
-        .menu-item:hover{
+        .menu-item:hover {
             background: var(--ion-color-primary);
             color: #fff;
+            .subMenu {
+                display: block;
+                z-index: 10;
+                position: absolute;
+                width: 100%;
+                top: 2.5em;
+                .subMenu-item {
+                    width: 100%;
+                    padding: 1em;
+                    border-bottom: solid 1px black;
+                    color: black;
+                    text-align: left;
+                }
+                .subMenu-item:hover {
+                    background-color: var(--ion-color-primary);
+                    color: white;
+                }
+            }
+        } 
+        .menu-item.active-item{
+            background: var(--ion-color-secondary);
         }
         @media (max-width: 750px) {
             display: none;

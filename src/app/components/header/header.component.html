@@ -9,19 +9,19 @@
     </div>
     <div id="menu-list">
       
-      <div class="menu-item" *ngFor="let page of pages" [routerLink]="page.url" routerDirection="root"
-        [ngClass] = "{'active-item': (!page.open && checkURL(selectedPath, page.url))}">
-          <div  *ngIf="!page.open" >{{ page.title }}</div>
-          <div *ngIf="page.open">{{ page.title }}
-            {{ page.title }}
-            <div class="subMenu">
-              <ul>
-                <li *ngFor="let subPage of page.subPages">
-                  {{ subPage.title }}
-                </li>
-              </ul>
-            </div>
+      <div class="menu-item" *ngFor="let page of pages"
+        [ngClass] = "{'active-item': (checkURL(selectedPath, page.url))}">
+        <div class="container" *ngIf="page.subPages">
+          <div class="title">{{ page.title }}</div>
+          <div class="subMenu">
+              <div class="subMenu-item" *ngFor="let subPage of page.subPages" [routerLink]="subPage.url" routerDirection="root">
+                {{ subPage.title }}
+              </div>
           </div>
+        </div>
+        <div class="container" *ngIf="!page.subPages" [routerLink]="page.url" routerDirection="root">
+          <div class="title">{{ page.title }}</div>
+        </div>
       </div> 
     </div>
    

@@ -16,31 +16,28 @@ export class PageService {
     return [
         {
           title: "Home",
-          open: false,
-          url: "/menu/home"
+          url: "/home"
         },
         {
           title: "Programm",
-          open: false,
-          url: "/menu/programm"
+          url: "/programm"
         },
         {
           title: "Kontakt",
-          open: false,
-          url: "/menu/kontakt"
+          url: "/kontakt"
         },
         {
           title: "Wissenswertes",
-          open: true,
+          url: "wissenswertes",
           subPages:  
           [
             {
               title: "Bergführer-Tarife",
-              url: "/menu/bergführerTarife"
+              url: "/wissenswertes/bergfuehrerTarife"
             },
             {
               title : "Links",
-              url: "/menu/links"
+              url: "/wissenswertes/links"
             }
 
           ]
