@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from 'src/app/services/page/page.service';
+import { PageData } from 'src/app/interfaces/pageData';
 
 @Component({
   selector: 'app-bergfuerer-tarife',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BergfuererTarifePage implements OnInit {
 
-  constructor() { }
+  pageData: PageData;
+  constructor(private pageService: PageService) { }
 
   ngOnInit() {
+    this.pageService
+      .getPageData("bergfuehrertarife")
+      .subscribe(data => (this.pageData = data));
   }
 
 }

@@ -162,7 +162,7 @@
       </ion-row>
 
       <ion-row> 
-        <ion-col *ngIf="matList != ''">
+        <ion-col *ngIf="(matList | async) != ''">
           <div class="matList">
             <h2>Material</h2>
             <div id="matList">

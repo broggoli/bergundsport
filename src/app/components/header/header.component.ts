@@ -21,7 +21,6 @@ export class HeaderComponent implements AfterViewInit {
   }
   
   checkURL(selectedPath, url) {
-    console.log(selectedPath, url)
     return selectedPath.includes(url) || ( selectedPath === "/" &&  url.includes("/home")) ;
   }
 }

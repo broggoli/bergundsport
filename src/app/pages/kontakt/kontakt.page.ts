@@ -9,7 +9,7 @@ import { PageService } from "src/app/services/page/page.service";
 })
 export class KontaktPage implements OnInit {
   constructor(private pageService: PageService) {}
-  @Input() pageData: PageData;
+  pageData: PageData;
   ngOnInit() {
     this.pageService
       .getPageData("kontakt")

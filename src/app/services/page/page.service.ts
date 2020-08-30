@@ -69,13 +69,21 @@ export class PageService {
       .get<any>(this._url)
       .pipe(
         shareReplay(5),
-        map(data => this.convertToPage(data.filter(d => d.slug === page)[0]))
+        map(data => {
+          data.map(d => { 
+            let pageData = this.convertToPage(d);
+            sessionStorage[CACHE_KEY+d.slug] = JSON.stringify(pageData)
+          })
+          return this.convertToPage(data.filter(d => d.slug === page)[0])
+        })
       )
-      //.pipe(startWith(JSON.parse(sessionStorage[CACHE_KEY+page] || '[]')));
-      pages.subscribe( p => {
-        sessionStorage[CACHE_KEY+page] = JSON.stringify(p);
-      });
-      return pages;
+    //.pipe(startWith(JSON.parse(sessionStorage[CACHE_KEY+page] || '[]')));
+    pages.subscribe( p => {
+      console.log(sessionStorage[CACHE_KEY+page])
+      let storedData: PageData = JSON.parse(sessionStorage[CACHE_KEY+page]);
+      return of(storedData);
+    });
+    return pages;
   }
   private convertToPage(page: any): PageData {
     return {
