@@ -27,9 +27,9 @@ const routes: Routes = [
       },
       {
         path: "programm",
-        loadChildren: () =>
+          loadChildren: () =>
           import("./pages/programm/programm.module").then(m => m.ProgrammPageModule)
-        //loadChildren: "../programm/programm.module#ProgrammPageModule"
+        //loadChildren: "./pages/programm/programm.module#ProgrammPageModule"
       },{
         path: "agb",
         loadChildren: () =>

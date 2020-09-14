@@ -1,0 +1,27 @@
+[22-Dec-2019 00:31:38 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$mailRecipients in /home/bergunds/public_html/api/php/sendMail.php on line 7
+[22-Dec-2019 00:31:38 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:31:38 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:31:38 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bergunds/public_html/api/php/mail.php on line 30
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$mailRecipients in /home/bergunds/public_html/api/php/sendMail.php on line 7
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 20
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:32:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bergunds/public_html/api/php/mail.php on line 32
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$mailRecipients in /home/bergunds/public_html/api/php/sendMail.php on line 7
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 20
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:32:53 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bergunds/public_html/api/php/mail.php on line 32
+[22-Dec-2019 00:33:51 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$mailRecipients in /home/bergunds/public_html/api/php/sendMail.php on line 7
+[22-Dec-2019 00:33:51 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:33:51 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 20
+[22-Dec-2019 00:33:51 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:33:51 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bergunds/public_html/api/php/mail.php on line 32
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$mailRecipients in /home/bergunds/public_html/api/php/sendMail.php on line 7
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderEmail in /home/bergunds/public_html/api/php/mail.php on line 19
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 20
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/mail.php on line 21
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bergunds/public_html/api/php/mail.php on line 32
+[22-Dec-2019 00:36:59 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$senderName in /home/bergunds/public_html/api/php/getEmailTexts.php on line 38

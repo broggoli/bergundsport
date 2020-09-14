@@ -13,7 +13,6 @@ import { ControlMessages } from "../../components/conrol-messages/conrol-message
 
 import { HeaderModule } from '../../components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
-import { InlineSVGModule } from 'ng-inline-svg';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 const routes: Routes = [
   {
@@ -34,7 +33,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    InlineSVGModule.forRoot({ baseUrl: 'http://bergundsport.ch/new/' }),
     IonicModule,
     HeaderModule,
     FooterModule,
