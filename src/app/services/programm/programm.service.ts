@@ -44,7 +44,7 @@ export class ProgrammService {
     return this.sortProgramm(this.getProgramm());
   }
   getProgramm(): Observable<VeranstaltungData[]> {
-    this.getMatLists().subscribe( d => console.log(d));
+    //this.getMatLists().subscribe( d => console.log(d));
     if (!this.programm) {
       this.programm = this.http
         .get<any>(this.programm_url)
@@ -60,27 +60,11 @@ export class ProgrammService {
     }
     return this.programm;
   }
-  getMatLists(): Observable<any[]> {
-    if (!this.matLists) {
-      this.matLists = this.http
-        .get<any>(this.mat_url)
-        .pipe(
-          shareReplay(5),
-          map((items: any[]) =>
-          items
-              .map((item: any) => {
-                return {
-                  title: item.slug,
-                  text: item.ausruestung.replace(/\r\n/g, `<br/>`)
-                }
-              })
-          ),
-        );
-    }
-    return this.matLists;
-  }
   private convertToVeranstaltung(event: any): VeranstaltungData {
-    let matList = this.category2matList(event.categories[0]);
+    let matList = "";
+    if(event?.auesrstung) {
+      matList = event?.auesrstung[0].ausruestung.replace(/\r\n/g, `<br/>`);
+    }
     let defaultImage = '../../../assets/header_image_mid.png';
     const imagesRaw: any[] = Array(event.bilder)[0];
     let image_urls;
@@ -113,18 +97,4 @@ export class ProgrammService {
       matList: matList
     };
   }
-  category2matList(cat: number) {
-    switch(cat) {
-      case 1:
-        return "hochtour-2-tage";
-      case 5:
-        return "skitouren-mehrtaegig-ab-hotel";
-      case 2:
-        return "skihochtour-mehrtaegig-ab-huette";
-      case 3:
-        return "snowboard-ski-tour";
-      case 4:
-        return "skitouren-mehrtaegig-ab-huette";
-  }
-}
 }

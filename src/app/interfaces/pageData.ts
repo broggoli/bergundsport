@@ -3,7 +3,7 @@ import { MaterialData } from "./materialData";
 
 export interface PageData {
   id: number;
+  slug: string;
   title: string;
   content: string;
-  meta_box?: any;
 }

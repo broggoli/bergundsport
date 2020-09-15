@@ -162,11 +162,15 @@
       </ion-row>
 
       <ion-row> 
-        <ion-col *ngIf="(matList | async) != ''">
+        <ion-col *ngIf="veranstaltung?.matList && veranstaltung?.matList != '<br>'">
           <div class="matList">
             <h2>Material</h2>
-            <div id="matList">
-              <p [innerHtml]="(matList | async)?.text "></p>
+            <div id="matList" [ngClass]="{'expand': showFullMatList}">
+              <p [innerHtml]="veranstaltung?.matList"></p>
+            </div>
+            <div class="showMoreBtn" (click)="toggleMatList()">
+              <span *ngIf="!showFullMatList">Mehr</span>
+              <span *ngIf="showFullMatList">Weniger</span>
             </div>
           </div>
         </ion-col>

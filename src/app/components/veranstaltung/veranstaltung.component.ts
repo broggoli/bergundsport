@@ -17,12 +17,17 @@ export class VeranstaltungComponent implements OnInit {
   getSVGSource() {
     this.categoryNr = this.data.category;
     switch( this.categoryNr ) {
-      case 5:
-        this.categoryName = "klettern";
+      case 2:
+        this.categoryName = "abfahrt";
         break;
-      default:
+      case 3:
         this.categoryName = "skitour";
         break;
+      case 4:
+        this.categoryName = "klettern";
+        break;
+      case 7:
+        this.categoryName = "bergtour"
     }
     return `${SVGSOURCE}${this.categoryName}.svg`;
   }

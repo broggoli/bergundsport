@@ -14,9 +14,10 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryImag
 export class VeranstaltungDetailComponent implements OnInit {
   id: number;
   veranstaltung: VeranstaltungData;
-  matList: Observable<any>;
+  //matList: Observable<any>;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  showFullMatList: boolean = false;
     
 
   constructor(
@@ -31,14 +32,10 @@ export class VeranstaltungDetailComponent implements OnInit {
       .subscribe(
         programm => {
           this.veranstaltung = programm.filter( veranstaltung => veranstaltung.id === this.id )[0];
-          this.matList = this.programmService.getMatLists().pipe( 
-              map(d => d.filter(
-                  list => list.title === this.veranstaltung.matList
-                )[0]
-              )
-          );
-          console.log(this.matList)
-          this.galleryImages = this.veranstaltung.image_urls.map(((s, i) => { 
+          console.log(this.veranstaltung)
+          this.galleryImages = []
+          if(this.veranstaltung?.image_urls)
+            this.galleryImages = this.veranstaltung?.image_urls.map(((s, i) => { 
               
               return { 
                 small: s,
@@ -87,5 +84,8 @@ export class VeranstaltungDetailComponent implements OnInit {
         }
     ];
 
+  }
+  toggleMatList() {
+    this.showFullMatList = !this.showFullMatList
   }
 }
